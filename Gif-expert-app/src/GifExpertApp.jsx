@@ -5,7 +5,7 @@ export const GifExpertApp = () => {
   const [categories, setCategories] = useState([]);
 
   const onAddCategory = (newCategory = "") => {
-    if (categories.includes(newCategory.toLowerCase())) return;
+    if (categories.includes(newCategory)) return;
     setCategories([newCategory,...categories]);
   };
 
@@ -14,7 +14,7 @@ export const GifExpertApp = () => {
       {/* titulo */}
       <h1>GifExpertApp</h1>
       <AddCategory onNewCategory={(value) => onAddCategory(value)} />
-      <button onClick={onAddCategory}>Agregar</button>
+      <button  aria-label="agregar" onClick={onAddCategory}>Agregar</button>
      
         {categories.map((category) => (
           <GifGrid key={category} category={category} />
