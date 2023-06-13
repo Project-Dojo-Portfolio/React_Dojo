@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
+import { Messaje } from "./Messaje";
 
 function SimpleForm() {
     const [formState, setformState] = useState({
         username: '',
         email: ''
     })
+
+    const {username, email} = formState;
 
     const onInputChange = (event) => {
         const {name, value} = event.target;
@@ -14,6 +17,7 @@ function SimpleForm() {
         });
     }
 
+
     useEffect(() => {
         console.log('components created');
     },[])
@@ -22,7 +26,11 @@ function SimpleForm() {
         console.log('formState Changed');
     },[formState])
 
-    const {username, email} = formState;
+    useEffect(() => {
+        console.log('email changed');
+    },[email])
+    
+
     return (
         <>
             <h1>Simple Formulario</h1>
@@ -30,14 +38,18 @@ function SimpleForm() {
             <input type="text"
                     className="form-control"
                     placeholder="Username"
-                    name={username} 
+                    name='username'
+                    value={username} 
                     onChange={onInputChange}/>
             <input 
                     type="email"
                     className="form-control mt-3"
                     placeholder="kevin@gmail.com"
-                    name={email} 
+                    name='email'
+                    value={email}
                     onChange={onInputChange}/>
+
+            <Messaje />
         </>
     )
 }
