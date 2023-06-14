@@ -1,7 +1,7 @@
 import { useForm } from "../hooks/useForm";
 
 function FormWithCustomHook() {
-   const {formState, onInputChange} = useForm({
+   const {formState, onInputChange, onResetForm} = useForm({
         username: '',
         email: '',
         password: ''
@@ -35,6 +35,8 @@ function FormWithCustomHook() {
                     name='password'
                     value={password}
                     onChange={onInputChange}/>
+
+            <button className="btn btn-primary" onClick={onResetForm}>Borrar</button>
 
             
         </>
