@@ -1,6 +1,6 @@
 import { TodoList } from "./TodoList";
 import { TodoAdd } from "./TodoAdd";
-import { useTodos } from "../hooks/useTodos";
+import { useTodos } from "../hooks";
 
 
 export const TodoApp = () => {
@@ -8,7 +8,7 @@ export const TodoApp = () => {
   return (
     <>
       <h1>
-        TodoApp: 10 <small>pendientes: 2</small>
+        TodoApp: {todos.length} <small>pendientes: {todos.filter(todo => !todo.done).length}</small>
       </h1>
       <hr />
 
