@@ -1,18 +1,35 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-export const TodoItem = ({description, id , onDeleteTodo}) => {
+export const TodoItem = ({
+  description,
+  id,
+  done,
+  onDeleteTodo,
+  onToggleTodo,
+}) => {
   return (
     <>
-    <li className="list-group-item d-flex justify-content-between">
-        <span className="align-self-center" >{description}</span>
-        <button className="btn btn-danger" onClick={() => onDeleteTodo(id)}>Borrar</button>
-    </li>
+      <li className="list-group-item d-flex justify-content-between">
+        <span
+          className={`align-self-center ${
+            done ? "text-decoration-line-through" : ""
+          }`}
+          onClick={() => onToggleTodo(id)}
+        >
+          {description}
+        </span>
+        <button className="btn btn-danger" onClick={() => onDeleteTodo(id)}>
+          Borrar
+        </button>
+      </li>
     </>
-  )
-}
+  );
+};
 
 TodoItem.propTypes = {
   description: PropTypes.string,
   onDeleteTodo: PropTypes.func,
-  id: PropTypes.number
-}
+  done: PropTypes.bool,
+  onToggleTodo: PropTypes.func,
+  id: PropTypes.number,
+};
